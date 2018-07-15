@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.wodesh.mapper.FileDataMapper">
+  <resultMap id="BaseResultMap" type="cn.wodesh.model.FileData">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="create_time" jdbcType="VARCHAR" property="createTime" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="file_size" jdbcType="BIGINT" property="fileSize" />
+    <result column="file_type" jdbcType="INTEGER" property="fileType" />
+    <result column="url" jdbcType="LONGVARCHAR" property="url" />
+    <result column="key_from" jdbcType="LONGVARCHAR" property="keyFrom" />
+    <result column="storage_location" jdbcType="LONGVARCHAR" property="storageLocation" />
+    <result column="file_name" jdbcType="VARCHAR" property="fileName" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, create_time, file_size, file_type , user_id , storage_location , file_name
+  </sql>
+  <sql id="Blob_Column_List">
+    url, key_from
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_file
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_file
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.wodesh.model.FileData">
+    insert into t_file (id, create_time, file_size, user_id ,
+      file_type, url, key_from, storage_location , file_name
+      )
+    values (#{id,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, #{fileSize,jdbcType=BIGINT}, #{userId,jdbcType=VARCHAR},
+      #{fileType,jdbcType=INTEGER}, #{url,jdbcType=LONGVARCHAR}, #{keyFrom,jdbcType=LONGVARCHAR},
+      #{storageLocation,jdbcType=LONGVARCHAR}, #{fileName,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.wodesh.model.FileData">
+    insert into t_file
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="fileSize != null">
+        file_size,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="fileType != null">
+        file_type,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="keyFrom != null">
+        key_from,
+      </if>
+      <if test="storageLocation != null">
+        storage_location,
+      </if>
+      <if test="fileName != null">
+        file_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="fileSize != null">
+        #{fileSize,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="fileType != null">
+        #{fileType,jdbcType=INTEGER},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="keyFrom != null">
+        #{keyFrom,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="storageLocation != null">
+        #{storageLocation,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="fileName != null">
+        #{fileName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.wodesh.model.FileData">
+    update t_file
+    <set>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="fileSize != null">
+        file_size = #{fileSize,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="fileType != null">
+        file_type = #{fileType,jdbcType=INTEGER},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="keyFrom != null">
+        key_from = #{keyFrom,jdbcType=LONGVARCHAR},
+      </if>
+
+      <if test="storageLocation != null">
+        storage_location = #{storageLocation,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="fileName != null">
+        file_name = #{fileName,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.wodesh.model.FileData">
+    update t_file
+    set create_time = #{createTime,jdbcType=VARCHAR},
+      file_size = #{fileSize,jdbcType=BIGINT},
+      user_id = #{userId,jdbcType=VARCHAR},
+      file_type = #{fileType,jdbcType=INTEGER},
+      url = #{url,jdbcType=LONGVARCHAR},
+      key_from = #{keyFrom,jdbcType=LONGVARCHAR},
+      storage_location = #{storageLocation,jdbcType=LONGVARCHAR},
+      file_name = #{fileName,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
