@@ -30,12 +30,13 @@ CREATE TABLE `t_file` (
   `user_id` varchar(32) DEFAULT NULL,
   `storage_location` text,
   `file_name` varchar(50) DEFAULT NULL,
+  `key_form_path` text,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `t_file` */
 
-insert  into `t_file`(`id`,`create_time`,`file_size`,`url`,`key_from`,`file_type`,`user_id`,`storage_location`,`file_name`) values ('ce6a19f1c465495cbe55e46116e8d7cd','2018-07-15 22:27:41',240857,'http://localhost:88/images/20180715/fe3a2b5bac0547ca831e1cc8457cf62e.jpg',NULL,1,NULL,'D:\\upload\\images\\20180715\\fe3a2b5bac0547ca831e1cc8457cf62e.jpg','fe3a2b5bac0547ca831e1cc8457cf62e.jpg');
+insert  into `t_file`(`id`,`create_time`,`file_size`,`url`,`key_from`,`file_type`,`user_id`,`storage_location`,`file_name`,`key_form_path`) values ('dc9f1b2fdb0c4cc9bdf138fced04483d','2018-07-16 22:54:20',278977,'http://localhost:88/videos/20180716/f2bbef7f389f4b0bb71af16bd2189994.mp4','http://localhost:88/videos/20180716/b16ca0f4802a428d8cbf14225d1784b4.jpg',3,'881a5581e7f14435ba771621981696e','D:\\upload\\videos\\20180716\\f2bbef7f389f4b0bb71af16bd2189994.mp4','f2bbef7f389f4b0bb71af16bd2189994.mp4','D:\\upload\\videos\\20180716\\b16ca0f4802a428d8cbf14225d1784b4.jpg'),('febbe592ea794180b67c507d47af6476','2018-07-16 22:49:13',240857,'http://localhost:88/images/20180716/94d23cb160864c2195fa9eaeff9406fd.jpg','http://localhost:88/images/20180716/be83c752c5ae435aa0f9cce8ab4dabc1.jpg',1,'881a5581e7f14435ba771621981696e','D:\\upload\\images\\20180716\\94d23cb160864c2195fa9eaeff9406fd.jpg','94d23cb160864c2195fa9eaeff9406fd.jpg','D:\\upload\\images\\20180716\\be83c752c5ae435aa0f9cce8ab4dabc1.jpg');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
