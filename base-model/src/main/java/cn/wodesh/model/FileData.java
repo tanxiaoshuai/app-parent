@@ -30,6 +30,10 @@ public class FileData {
     //文件名
     private String fileName;
 
+
+    //首帧存放地址
+    private String keyFormPath;
+
     //上传人名字
     private String createName;
 
@@ -111,5 +115,13 @@ public class FileData {
 
     public void setFileName(String fileName) {
         this.fileName = fileName;
+    }
+
+    public String getKeyFormPath() {
+        return keyFormPath;
+    }
+
+    public void setKeyFormPath(String keyFormPath) {
+        this.keyFormPath = keyFormPath;
     }
 }

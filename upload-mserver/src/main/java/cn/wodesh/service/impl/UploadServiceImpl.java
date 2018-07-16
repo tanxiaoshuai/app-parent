@@ -1,19 +1,18 @@
 package cn.wodesh.service.impl;
 
 import cn.wodesh.entity.FileSource;
+import cn.wodesh.entity.Header;
 import cn.wodesh.mapper.FileDataMapper;
 import cn.wodesh.model.FileData;
 import cn.wodesh.service.IUploadService;
-import cn.wodesh.util.DateUtil;
-import cn.wodesh.util.FileUtil;
-import cn.wodesh.util.KeyUtil;
-import cn.wodesh.util.ResultUtil;
+import cn.wodesh.util.*;
 import cn.wodesh.validation.FileUploadAssert;
 import org.apache.tomcat.util.http.fileupload.FileUploadException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
+import java.util.Map;
 
 /**
  * Created by TS on 2018/7/15.
@@ -25,6 +24,8 @@ public class UploadServiceImpl implements IUploadService{
     private FileSource fileSource;
     @Autowired
     private FileDataMapper fileDataMapper;
+    @Autowired
+    private ImageUtil imageUtil;
 
     /**
      * 上传文件
@@ -57,6 +58,8 @@ public class UploadServiceImpl implements IUploadService{
         //组装url
         String url = new StringBuffer().append(fileSource.getUrlType()).append("://")
                 .append(fileSource.getUrl()).append("/").append(filePath).append("/").append(DateUtil.currentTime(DateUtil.HHMMSS)).append("/").append(fileName).toString();
+        Map<String,String> map = imageUtil.createKeyForm(path.toString() , 280 , 280 , type);
+        Header header = RequestUtil.getHeader();
         FileData fileData = new FileData();
         fileData.setId(KeyUtil.uuid());
         fileData.setCreateTime(DateUtil.currentTime(DateUtil.YEARTOSS));
@@ -65,6 +68,9 @@ public class UploadServiceImpl implements IUploadService{
         fileData.setUrl(url);
         fileData.setStorageLocation(path.toString());
         fileData.setFileName(fileName);
+        fileData.setKeyFormPath(map.get("path"));
+        fileData.setKeyFrom(map.get("url"));
+        fileData.setUserId(TokenUtil.getTokenParam(header.getToken()).getUserid());
         fileDataMapper.insert(fileData);
         return ResultUtil.success(fileData);
     }

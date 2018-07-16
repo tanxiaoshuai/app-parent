@@ -11,10 +11,11 @@
     <result column="key_from" jdbcType="LONGVARCHAR" property="keyFrom" />
     <result column="storage_location" jdbcType="LONGVARCHAR" property="storageLocation" />
     <result column="file_name" jdbcType="VARCHAR" property="fileName" />
+    <result column="key_form_path" jdbcType="LONGVARCHAR" property="keyFormPath" />
   </resultMap>
 
   <sql id="Base_Column_List">
-    id, create_time, file_size, file_type , user_id , storage_location , file_name
+    id, create_time, file_size, file_type , user_id , storage_location , file_name ,key_form_path
   </sql>
   <sql id="Blob_Column_List">
     url, key_from
@@ -34,11 +35,11 @@
   </delete>
   <insert id="insert" parameterType="cn.wodesh.model.FileData">
     insert into t_file (id, create_time, file_size, user_id ,
-      file_type, url, key_from, storage_location , file_name
+      file_type, url, key_from, storage_location , file_name ,key_form_path
       )
     values (#{id,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, #{fileSize,jdbcType=BIGINT}, #{userId,jdbcType=VARCHAR},
       #{fileType,jdbcType=INTEGER}, #{url,jdbcType=LONGVARCHAR}, #{keyFrom,jdbcType=LONGVARCHAR},
-      #{storageLocation,jdbcType=LONGVARCHAR}, #{fileName,jdbcType=VARCHAR}
+      #{storageLocation,jdbcType=LONGVARCHAR}, #{fileName,jdbcType=VARCHAR},#{keyFormPath,jdbcType=LONGVARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="cn.wodesh.model.FileData">
@@ -71,6 +72,9 @@
       <if test="fileName != null">
         file_name,
       </if>
+      <if test="keyFormPath != null">
+        key_form_path,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -100,6 +104,9 @@
       <if test="fileName != null">
         #{fileName,jdbcType=VARCHAR},
       </if>
+      <if test="keyFormPath != null">
+        #{keyFormPath,jdbcType=VARCHAR},
+      </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="cn.wodesh.model.FileData">
@@ -123,12 +130,14 @@
       <if test="keyFrom != null">
         key_from = #{keyFrom,jdbcType=LONGVARCHAR},
       </if>
-
       <if test="storageLocation != null">
         storage_location = #{storageLocation,jdbcType=LONGVARCHAR},
       </if>
       <if test="fileName != null">
         file_name = #{fileName,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="keyFormPath != null">
+        key_form_path = #{keyFormPath,jdbcType=LONGVARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=VARCHAR}
@@ -142,7 +151,8 @@
       url = #{url,jdbcType=LONGVARCHAR},
       key_from = #{keyFrom,jdbcType=LONGVARCHAR},
       storage_location = #{storageLocation,jdbcType=LONGVARCHAR},
-      file_name = #{fileName,jdbcType=LONGVARCHAR}
+      file_name = #{fileName,jdbcType=LONGVARCHAR},
+      key_form_path = #{keyFormPath,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>
 </mapper>
