@@ -13,5 +13,5 @@ public interface IUploadService {
      * @return
      * @throws Exception
      */
-    Object upload(MultipartFile multipartFile) throws Exception;
+    Object upload(MultipartFile multipartFile, String keyFormSize) throws Exception;
 }

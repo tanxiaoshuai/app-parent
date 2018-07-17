@@ -17,7 +17,7 @@ public class UploadController {
     private IUploadService uploadService;
 
     @PostMapping("/upload")
-    public Object upload(@RequestParam("file") MultipartFile multipartFile , String data) throws Exception{
-        return uploadService.upload(multipartFile);
+    public Object upload(@RequestParam("file") MultipartFile multipartFile , String keyFormSize) throws Exception{
+        return uploadService.upload(multipartFile , keyFormSize);
     }
 }

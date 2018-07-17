@@ -29,9 +29,9 @@ public class FileUtil {
         }catch (IOException e) {
             throw new FileUploadException("文件上传失败");
         }finally {
-            if (inputStream == null)
+            if (inputStream != null)
                 inputStream.close();
-            if (fileOutputStream == null)
+            if (fileOutputStream != null)
                 fileOutputStream.close();
         }
     }

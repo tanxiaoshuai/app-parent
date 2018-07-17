@@ -3,6 +3,8 @@ package cn.wodesh.util;
 import cn.wodesh.entity.FileSource;
 import org.bytedeco.javacv.FFmpegFrameGrabber;
 import org.bytedeco.javacv.Frame;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import javax.imageio.ImageIO;
@@ -20,6 +22,8 @@ import java.util.Map;
 
 @Component
 public class ImageUtil {
+
+    private final static Logger LOGGER = LoggerFactory.getLogger(ImageUtil.class);
 
     @Autowired
     private FileSource fileSource;
@@ -119,7 +123,17 @@ public class ImageUtil {
         return tagerPath;
     }
 
+    /**
+     * 根据文件类型生成首帧
+     * @param path
+     * @param width
+     * @param height
+     * @param type
+     * @return
+     * @throws Exception
+     */
     public Map<String , String> createKeyForm(String path, int width , int height,Integer type) throws Exception {
+        long s = System.currentTimeMillis();
         Map<String , String> map = new HashMap<>();
         String time = DateUtil.currentTime(DateUtil.HHMMSS);
         String name = new StringBuffer().append(KeyUtil.uuid()).append(".jpg").toString();
@@ -134,6 +148,7 @@ public class ImageUtil {
             createThumbnail(path , width , height , tagerPath.toString());
         if(3 == type)
             fetchFrame(path , width , height , tagerPath.toString());
+        LOGGER.info("图片首帧生成成功: {}{}" , (System.currentTimeMillis() - s) / 1000 , "s");
         return map;
     }
 }

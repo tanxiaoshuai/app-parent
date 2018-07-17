@@ -54,6 +54,13 @@ public class FileSource {
     @Value("${file.others.path}")
     private String othersPath;
 
+    @Value("${key.form.size}")
+    private String keyFormSize;
+
+    private int keyFormHeight;
+
+    private int keyFormWidth;
+
     public String getPath() {
         return path;
     }
@@ -156,6 +163,33 @@ public class FileSource {
 
     public void setOthersPath(String othersPath) {
         this.othersPath = othersPath;
+    }
+
+    public String getKeyFormSize() {
+        String arr[] = keyFormSize.split("[*]");
+        keyFormHeight = Integer.parseInt(arr[0].trim());
+        keyFormWidth = Integer.parseInt(arr[1].trim());
+        return keyFormSize;
+    }
+
+    public void setKeyFormSize(String keyFormSize) {
+        this.keyFormSize = keyFormSize;
+    }
+
+    public int getKeyFormHeight() {
+        return keyFormHeight;
+    }
+
+    public void setKeyFormHeight(int keyFormHeight) {
+        this.keyFormHeight = keyFormHeight;
+    }
+
+    public int getKeyFormWidth() {
+        return keyFormWidth;
+    }
+
+    public void setKeyFormWidth(int keyFormWidth) {
+        this.keyFormWidth = keyFormWidth;
     }
 
     /**

@@ -10,11 +10,16 @@ import org.apache.tomcat.util.http.fileupload.FileUploadException;
  */
 public class FileUploadAssert {
 
+    /**
+     * 判断是否支持类型
+     * @param contentType
+     * @return
+     * @throws Exception
+     */
     public static Integer checkFile(String contentType) throws Exception {
         FileSource fileSource = BeanFactoryUtil.getBeanByClass(FileSource.class);
         Integer type = 0;
         contentType = contentType.toLowerCase();
-        System.out.println(JSONArray.toJSON(fileSource.getImages()));
         if (fileSource.getImages().contains(contentType))
             type = 1;
         if(fileSource.getTexts().contains(contentType))
