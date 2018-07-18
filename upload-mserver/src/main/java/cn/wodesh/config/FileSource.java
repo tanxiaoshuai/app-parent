@@ -1,4 +1,4 @@
-package cn.wodesh.entity;
+package cn.wodesh.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;

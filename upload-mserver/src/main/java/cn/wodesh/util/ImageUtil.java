@@ -1,6 +1,6 @@
 package cn.wodesh.util;
 
-import cn.wodesh.entity.FileSource;
+import cn.wodesh.config.FileSource;
 import org.bytedeco.javacv.FFmpegFrameGrabber;
 import org.bytedeco.javacv.Frame;
 import org.slf4j.Logger;

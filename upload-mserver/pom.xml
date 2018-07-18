@@ -37,6 +37,11 @@
 			<artifactId>base-model</artifactId>
 			<version>1.0.0</version>
 		</dependency>
+		<dependency>
+			<groupId>cn.wodesh</groupId>
+			<artifactId>data-source-config</artifactId>
+			<version>1.0.0</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>

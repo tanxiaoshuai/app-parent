@@ -1,7 +1,6 @@
 package cn.wodesh.mongodb;
 
 import cn.wodesh.entity.MongoEntity;
-import cn.wodesh.model.Location;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;

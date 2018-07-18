@@ -3,6 +3,7 @@ package cn.wodesh.config;
 /**
  * Created by TS on 2017/9/17.
  */
+
 import cn.wodesh.redis.RedisExpiredListener;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
@@ -23,6 +24,7 @@ import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 import org.springframework.data.redis.listener.Topic;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
+
 import java.lang.reflect.Method;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ThreadPoolExecutor;

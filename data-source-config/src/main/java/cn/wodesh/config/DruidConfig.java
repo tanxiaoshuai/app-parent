@@ -77,11 +77,4 @@ public class DruidConfig {
         return filterRegistrationBean;
     }
 
-//    @Bean
-//    public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
-//        SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
-//        bean.setDataSource(dataSource);
-//        bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:mapper/*.xml"));
-//        return bean.getObject();
-//    }
 }

@@ -1,13 +1,12 @@
 package cn.wodesh.service.impl;
 
-import cn.wodesh.entity.FileSource;
+import cn.wodesh.config.FileSource;
 import cn.wodesh.entity.Header;
 import cn.wodesh.mapper.FileDataMapper;
 import cn.wodesh.model.FileData;
 import cn.wodesh.service.IUploadService;
 import cn.wodesh.util.*;
 import cn.wodesh.validation.FileUploadAssert;
-import com.alibaba.fastjson.JSONObject;
 import org.apache.tomcat.util.http.fileupload.FileUploadException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

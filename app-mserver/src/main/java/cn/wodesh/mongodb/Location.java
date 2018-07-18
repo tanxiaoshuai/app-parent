@@ -1,4 +1,4 @@
-package cn.wodesh.model;
+package cn.wodesh.mongodb;
 
 import org.springframework.data.annotation.Id;
 

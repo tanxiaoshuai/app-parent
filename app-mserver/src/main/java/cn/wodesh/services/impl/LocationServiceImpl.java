@@ -3,7 +3,7 @@ package cn.wodesh.services.impl;
 import cn.wodesh.entity.Header;
 import cn.wodesh.entity.MongoEntity;
 import cn.wodesh.entity.TokenParam;
-import cn.wodesh.model.Location;
+import cn.wodesh.mongodb.Location;
 import cn.wodesh.mongodb.LocationMongoDao;
 import cn.wodesh.services.ILocationService;
 import cn.wodesh.util.*;

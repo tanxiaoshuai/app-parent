@@ -1,7 +1,7 @@
 package cn.wodesh.services;
 
 import cn.wodesh.entity.MongoEntity;
-import cn.wodesh.model.Location;
+import cn.wodesh.mongodb.Location;
 
 /**
  * Created by TS on 2018/7/14.

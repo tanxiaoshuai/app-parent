@@ -1,8 +1,8 @@
 package cn.wodesh.validation;
 
-import cn.wodesh.entity.FileSource;
+
+import cn.wodesh.config.FileSource;
 import cn.wodesh.util.BeanFactoryUtil;
-import com.alibaba.fastjson.JSONArray;
 import org.apache.tomcat.util.http.fileupload.FileUploadException;
 
 /**

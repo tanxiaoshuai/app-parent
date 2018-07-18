@@ -1,7 +1,7 @@
 package cn.wodesh.controllers;
 
 import cn.wodesh.entity.MongoEntity;
-import cn.wodesh.model.Location;
+import cn.wodesh.mongodb.Location;
 import cn.wodesh.services.ILocationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
