@@ -3,7 +3,7 @@ package cn.wodesh.model;
 /**
  * Created by TS on 2018/7/15.
  */
-public class FileData {
+public class FileData extends BaseModel{
 
     private String id;
 

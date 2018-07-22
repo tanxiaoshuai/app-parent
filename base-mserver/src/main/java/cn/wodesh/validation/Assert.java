@@ -11,28 +11,18 @@ import cn.wodesh.util.RegexUtil;
 public class Assert {
 
     public static void notNull(String param , String msg , Class c) throws Exception {
-            if(RegexUtil.isNull(param))
-                throw (Exception) c.getConstructor(ResultInfo.class).newInstance(ResultInfo.ERROR_PARAM.setMsg(msg));
-
-
+        if(RegexUtil.isNull(param))
+            throw (RuntimeException) c.getConstructor(ResultInfo.class).newInstance(ResultInfo.ERROR_PARAM.setMsg(msg));
     }
 
-    public static void notNull(Integer param , String msg, Class c){
-        try {
-            if(RegexUtil.isNull(param))
-                throw (Exception) c.getConstructor(ResultInfo.class).newInstance(ResultInfo.ERROR_PARAM.setMsg(msg));
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+    public static void notNull(Integer param , String msg, Class c) throws Exception {
+        if(RegexUtil.isNull(param))
+            throw (RuntimeException) c.getConstructor(ResultInfo.class).newInstance(ResultInfo.ERROR_PARAM.setMsg(msg));
     }
 
-    public static void notNull(Object o , String msg, Class c){
-        try {
-            if(o == null)
-                throw (Exception) c.getConstructor(ResultInfo.class).newInstance(ResultInfo.ERROR_PARAM.setMsg(msg));
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+    public static void notNull(Object o , String msg, Class c) throws Exception {
+        if(o == null)
+            throw (Exception) c.getConstructor(ResultInfo.class).newInstance(ResultInfo.ERROR_PARAM.setMsg(msg));
     }
 
     public static void length(int min , long max , String param , String msg){

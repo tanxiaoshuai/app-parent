@@ -6,6 +6,10 @@ import java.util.Date;
 
 public class DateUtil {
 
+    public final static String YEARTOSS_PATTERN = "((([0-9]{3}[1-9]|[0-9]{2}[1-9][0-9]{1}|[0-9]{1}[1-9][0-9]{2}|[1-9][0-9]{3})-(((0[13578]|1[02])-(0[1-9]|[12][0-9]|3[01]))|\n" +
+            "((0[469]|11)-(0[1-9]|[12][0-9]|30))|(02-(0[1-9]|[1][0-9]|2[0-8]))))|((([0-9]{2})(0[48]|[2468][048]|[13579][26])|\n" +
+            "((0[48]|[2468][048]|[3579][26])00))-02-29))\n" +
+            "\\s([0-1][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])$";
     public final static String YEARTOSS = "yyyy-MM-dd HH:mm:ss";
     public final static String HH_MM_SS = "yyyy-MM-dd";
     public final static String YMHSS = "yyyyMMddHHmmss";
@@ -44,5 +48,15 @@ public class DateUtil {
     public static String dateFormat(String time , String oldFat , String newFat){
         long s = longForDate(time , oldFat);
         return longForTime(s , newFat);
+    }
+
+    /**
+     * 判断时间格式
+     * @param dt
+     * @param pattern
+     * @return
+     */
+    public static boolean isDateForm(String dt , String pattern){
+        return RegexUtil.match(dt , pattern);
     }
 }

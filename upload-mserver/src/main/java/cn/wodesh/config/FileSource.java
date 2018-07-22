@@ -57,9 +57,6 @@ public class FileSource {
     @Value("${key.form.size}")
     private String keyFormSize;
 
-    private int keyFormHeight;
-
-    private int keyFormWidth;
 
     public String getPath() {
         return path;
@@ -166,30 +163,19 @@ public class FileSource {
     }
 
     public String getKeyFormSize() {
-        String arr[] = keyFormSize.split("[*]");
-        keyFormHeight = Integer.parseInt(arr[0].trim());
-        keyFormWidth = Integer.parseInt(arr[1].trim());
         return keyFormSize;
     }
 
-    public void setKeyFormSize(String keyFormSize) {
-        this.keyFormSize = keyFormSize;
-    }
-
-    public int getKeyFormHeight() {
-        return keyFormHeight;
-    }
-
-    public void setKeyFormHeight(int keyFormHeight) {
-        this.keyFormHeight = keyFormHeight;
-    }
-
-    public int getKeyFormWidth() {
-        return keyFormWidth;
-    }
-
-    public void setKeyFormWidth(int keyFormWidth) {
-        this.keyFormWidth = keyFormWidth;
+    /**
+     * 解析长宽
+     * @param keyFormSize
+     * @return
+     */
+    public int[] getKeyFormSizes(String keyFormSize){
+        String arr[] = keyFormSize.split("[*]");
+        int keyFormHeight = Integer.parseInt(arr[0].trim());
+        int keyFormWidth = Integer.parseInt(arr[1].trim());
+        return new int[]{keyFormHeight , keyFormWidth};
     }
 
     /**

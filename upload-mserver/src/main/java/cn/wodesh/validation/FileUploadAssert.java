@@ -2,13 +2,15 @@ package cn.wodesh.validation;
 
 
 import cn.wodesh.config.FileSource;
+import cn.wodesh.exception.FileException;
 import cn.wodesh.util.BeanFactoryUtil;
 import org.apache.tomcat.util.http.fileupload.FileUploadException;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  * Created by TS on 2018/7/15.
  */
-public class FileUploadAssert {
+public class FileUploadAssert extends Assert{
 
     /**
      * 判断是否支持类型
@@ -33,5 +35,14 @@ public class FileUploadAssert {
         if(type == 0)
             throw new FileUploadException(new StringBuffer().append("暂不支持上传 ").append(contentType).append(" 格式文件").toString());
         return type;
+    }
+
+    /**
+     * 判断是否选择文件
+     * @param multipartFile
+     * @throws Exception
+     */
+    public static void MultipartFileNotNull(MultipartFile multipartFile) throws Exception {
+        notNull(multipartFile , "请选择文件" , FileException.class);
     }
 }

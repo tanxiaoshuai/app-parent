@@ -148,7 +148,7 @@ public class ImageUtil {
             createThumbnail(path , width , height , tagerPath.toString());
         if(3 == type)
             fetchFrame(path , width , height , tagerPath.toString());
-        LOGGER.info("图片首帧生成成功: {}{}" , (System.currentTimeMillis() - s) / 1000 , "s");
+        LOGGER.info("图片首帧生成成功: {}{}" , System.currentTimeMillis() - s , "ms");
         return map;
     }
 }
